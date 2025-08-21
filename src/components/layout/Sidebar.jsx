@@ -13,6 +13,7 @@ import {
   LogOut,
   ChevronLeft,
   ChevronRight,
+  Folder, // 👈 added for File Manager
 } from "lucide-react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
@@ -49,6 +50,7 @@ export function Sidebar({ isCollapsed, onToggle }) {
     { icon: Home, label: "Home", href: "/dashboard" },
     { icon: Cloud, label: "Storage", href: "/storage" },
     { icon: Upload, label: "Upload", href: "/upload" },
+    { icon: Folder, label: "My Files", href: "/files" }, // 👈 new File Manager link
     { icon: User, label: "Profile", href: "/profile" },
     { icon: Search, label: "Search", href: "/search" },
     { icon: Palette, label: "Theme", href: "/theme" },

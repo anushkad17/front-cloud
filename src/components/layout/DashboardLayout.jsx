@@ -9,6 +9,7 @@ export function DashboardLayout({ children, title = "Dashboard", showAIButton = 
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const { toast } = useToast();
 
+  // Notification handler
   const handleNotifications = () => {
     toast({
       title: "Notifications",
@@ -16,6 +17,7 @@ export function DashboardLayout({ children, title = "Dashboard", showAIButton = 
     });
   };
 
+  // Settings handler
   const handleSettings = () => {
     toast({
       title: "Settings",
@@ -24,7 +26,7 @@ export function DashboardLayout({ children, title = "Dashboard", showAIButton = 
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-accent/5 flex">
+    <div className="min-h-screen flex bg-gradient-to-br from-background to-accent/5">
       {/* Sidebar */}
       <Sidebar
         isCollapsed={sidebarCollapsed}
@@ -34,8 +36,9 @@ export function DashboardLayout({ children, title = "Dashboard", showAIButton = 
       {/* Main Content */}
       <div className="flex-1 flex flex-col">
         {/* Header */}
-        <header className="h-16 border-b bg-background/80 backdrop-blur-md flex items-center justify-between px-6">
+        <header className="h-16 border-b bg-background/80 backdrop-blur-md flex items-center justify-between px-6 sticky top-0 z-50">
           <div className="flex items-center space-x-4">
+            {/* Mobile menu toggle */}
             <Button
               variant="ghost"
               size="sm"
@@ -47,9 +50,11 @@ export function DashboardLayout({ children, title = "Dashboard", showAIButton = 
             <h1 className="text-xl font-semibold">{title}</h1>
           </div>
 
+          {/* Header actions */}
           <div className="flex items-center space-x-4">
             {showAIButton && <AIButton />}
 
+            {/* Notifications */}
             <Button
               variant="ghost"
               size="sm"
@@ -60,6 +65,7 @@ export function DashboardLayout({ children, title = "Dashboard", showAIButton = 
               <span className="absolute -top-1 -right-1 h-3 w-3 bg-destructive rounded-full animate-pulse"></span>
             </Button>
 
+            {/* Settings */}
             <Button
               variant="ghost"
               size="sm"
@@ -71,11 +77,12 @@ export function DashboardLayout({ children, title = "Dashboard", showAIButton = 
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 overflow-auto">
+        <main className="flex-1 overflow-auto p-6">
           {children}
         </main>
       </div>
     </div>
   );
-};
+}
+
 export default DashboardLayout;

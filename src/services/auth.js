@@ -1,4 +1,4 @@
-import api from "./http";
+import api from "../api/axios";
 
 export async function login(username, password) {
   const { data } = await api.post("/auth/login", { username, password });
